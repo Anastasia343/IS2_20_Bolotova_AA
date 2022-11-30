@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Name = "store";
-            this.Text = "storecs";
+            this.Text = "Store";
             this.Load += new System.EventHandler(this.storecs_Load);
             this.ResumeLayout(false);
 

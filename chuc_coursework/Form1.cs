@@ -55,7 +55,7 @@ namespace chuc_coursework
             //adapter.SelectCommand = command;
 
             //Запрос в БД на предмет того, если ли строка с подходящим логином и паролем
-            string sql = "SELECT * FROM user WHERE login = @un and password= @up";
+            string sql = "SELECT * FROM User WHERE login = @un and password= @up";
             //Открытие соединения
             conn.Open();
             //Объявляем таблицу

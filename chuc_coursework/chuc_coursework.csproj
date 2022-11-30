@@ -137,5 +137,8 @@
   <ItemGroup>
     <None Include="Resources\1645238153_51-phonoteka-org-p-oboi-razmitii-fon-53.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

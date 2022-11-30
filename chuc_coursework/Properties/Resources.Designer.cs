@@ -83,6 +83,16 @@ namespace chuc_coursework.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sky_purple_pink_violet_atmospheric_phenomenon_horizon_atmosphere_lilac_morning_calm_cloud_dawn_magenta_evening_sunlight_sunset_sunrise_1631410 {
             get {
                 object obj = ResourceManager.GetObject("sky-purple-pink-violet-atmospheric-phenomenon-horizon-atmosphere-lilac-morning-ca" +
