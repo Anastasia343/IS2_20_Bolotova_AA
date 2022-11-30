@@ -18,6 +18,7 @@ namespace chuc_coursework
         public Form1()
         {
             InitializeComponent();
+            textBox2.UseSystemPasswordChar = true;
         }
 
         static string sha256(string randomString)
@@ -98,6 +99,18 @@ namespace chuc_coursework
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+            {
+                textBox2.UseSystemPasswordChar = false;  
+            }
+            else 
+            {
+                textBox2.UseSystemPasswordChar = true;
+            }
         }
     }
 }
