@@ -12,10 +12,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace chuc_coursework
 {
-    public partial class Form1 : Form
+    public partial class authorization : Form
     {
         
-        public Form1()
+        public authorization()
         {
             InitializeComponent();
             textBox2.UseSystemPasswordChar = true;

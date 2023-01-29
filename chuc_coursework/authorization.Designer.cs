@@ -1,6 +1,6 @@
 ﻿namespace chuc_coursework
 {
-    partial class Form1
+    partial class authorization
     {
         /// <summary>
         /// Обязательная переменная конструктора.
