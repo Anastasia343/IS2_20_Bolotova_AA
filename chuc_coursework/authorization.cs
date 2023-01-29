@@ -14,7 +14,10 @@ namespace chuc_coursework
 {
     public partial class authorization : Form
     {
+        Form1 form1 = new Form1();
+        //authorization authh =new authorization();
         
+
         public authorization()
         {
             InitializeComponent();
@@ -82,18 +85,38 @@ namespace chuc_coursework
             {
                 //Присваеваем глобальный признак авторизации
                 Auth.auth = true;
-                //Достаем данные пользователя в случае успеха
-                //GetUserInfo(textBox1.Text);
-                //Закрываем форму
-                this.Hide();
-                store gg = new store();
-                gg.Show();
+                //добавляем метод,который будет открывать разные формы в зависимости от пользователя
+                
+                ////Достаем данные пользователя в случае успеха
+                ////GetUserInfo(textBox1.Text);
+                ////Закрываем форму
+                //this.Hide();
+                //store gg = new store();
+                //gg.Show();
             }
             else
             {
                 //Отобразить сообщение о том, что авторизаия неуспешна
                 MessageBox.Show("Неверные данные авторизации!");
             }
+            conn.Open();
+            string SelectRole = $"SELECT `post` FROM `User` WHERE `login` = \"{textBox1.Text}\"";
+            MySqlCommand cmd = new MySqlCommand(SelectRole, conn);
+            string Role = Convert.ToString(cmd.ExecuteScalar());
+            switch (Role)
+            {
+                case "commodity_expert":
+                    this.Hide();
+                    form1.Show();
+                    break;
+                case "admin":
+                    MessageBox.Show("admin Rakova");
+                    break;
+                default:
+                    conn.Close();
+                    break;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
