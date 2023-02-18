@@ -14,6 +14,8 @@ namespace chuc_coursework
 {
     public partial class authorization : Form
     {
+        public static string connStr = "server = chuc.caseum.ru;port = 33333;user = st_2_20_4;database=is_2_20_st4_KURS;password=65655604;";
+
         Form1 form1 = new Form1();
         //authorization authh =new authorization();
         
@@ -45,7 +47,7 @@ namespace chuc_coursework
         
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string connStr = "server = chuc.caseum.ru;port = 33333;user = st_2_20_4;database=is_2_20_st4_KURS;password=65655604;";
+            
             MySqlConnection conn;
             conn = new MySqlConnection(connStr);
             //string login = LoginUser.Text;
@@ -113,17 +115,13 @@ namespace chuc_coursework
                     MessageBox.Show("admin Rakova");
                     break;
                 default:
-                    conn.Close();
+                    conn.Close(); // висит форма 1
                     break;
             }
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        } //возможно можно добавить админа и он будет удалять 
+        // добавить обработчик ошибок чтоб при добавлении в таблицу если 9 есть аидишник и чел решит добавить с 9 еще то программа не будет хлопатся а просто будет вывоть в меседжбокс что ты ебалай и не должен добавлять тоже самое;)
+        // добавить поточность в авторизации
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if(checkBox1.Checked)
@@ -134,6 +132,11 @@ namespace chuc_coursework
             {
                 textBox2.UseSystemPasswordChar = true;
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
