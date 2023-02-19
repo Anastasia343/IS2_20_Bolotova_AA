@@ -8,8 +8,11 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace chuc_coursework
 {
@@ -95,6 +98,7 @@ namespace chuc_coursework
             command.Parameters.AddWithValue("KPP", textBox9.Text);
             command.ExecuteNonQuery();
             conn.Close();
+            //Form1.ActiveForm.Invalidate();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -107,12 +111,34 @@ namespace chuc_coursework
         private void button6_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = new MySqlConnection(authorization.connStr);
-            string id = textBox10.Text;
+            string id = textBox11.Text;
             string MySQL = string.Format("DELETE FROM Provider WHERE (id = {0})", id);
             conn.Open();
             MySqlCommand command = new MySqlCommand(MySQL, conn);
             command.ExecuteNonQuery();
             conn.Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            for (int i=0; i < dataGridView1.Rows.Count; i++)
+            {
+                string test = dataGridView1[1, i].Value.ToString();
+                Regex reg = new Regex($@"{textBox12.Text}", RegexOptions.IgnoreCase);
+                MatchCollection matches = reg.Matches(test);
+                if (matches.Count > 0)
+                {
+                    foreach(Match item in matches) 
+                    {
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightCoral;
+                    }
+                }
+            }
         }
     }
 }
