@@ -83,29 +83,43 @@ namespace chuc_coursework
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection(authorization.connStr);
-            conn.Open();
-            MySqlCommand command = new MySqlCommand("INSERT INTO Provider (id, name, address, telephone, score, mail, INN, OGRN, KPP) values (@id, @name, @address, @telephone, @score, @mail, @INN, @OGRN, @KPP)");
-            command.Connection = conn;
-            command.Parameters.AddWithValue("id", textBox1.Text);
-            command.Parameters.AddWithValue("name", textBox2.Text);
-            command.Parameters.AddWithValue("address", textBox3.Text);
-            command.Parameters.AddWithValue("telephone", textBox4.Text);
-            command.Parameters.AddWithValue("score", textBox5.Text);
-            command.Parameters.AddWithValue("mail", textBox6.Text);
-            command.Parameters.AddWithValue("INN", textBox7.Text);
-            command.Parameters.AddWithValue("OGRN", textBox8.Text);
-            command.Parameters.AddWithValue("KPP", textBox9.Text);
-            command.ExecuteNonQuery();
-            conn.Close();
-            //Form1.ActiveForm.Invalidate();
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(authorization.connStr);
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("INSERT INTO Provider (id, name, address, telephone, score, mail, INN, OGRN, KPP) values (@id, @name, @address, @telephone, @score, @mail, @INN, @OGRN, @KPP)");
+                command.Connection = conn;
+                command.Parameters.AddWithValue("id", textBox1.Text);
+                command.Parameters.AddWithValue("name", textBox2.Text);
+                command.Parameters.AddWithValue("address", textBox3.Text);
+                command.Parameters.AddWithValue("telephone", textBox4.Text);
+                command.Parameters.AddWithValue("score", textBox5.Text);
+                command.Parameters.AddWithValue("mail", textBox6.Text);
+                command.Parameters.AddWithValue("INN", textBox7.Text);
+                command.Parameters.AddWithValue("OGRN", textBox8.Text);
+                command.Parameters.AddWithValue("KPP", textBox9.Text);
+                command.ExecuteNonQuery();
+                conn.Close();
+                
+            }
+            catch (MySql.Data.MySqlClient.MySqlException) 
+            {
+                MessageBox.Show("данное id уже присутствует или поле не заполнено");
+            }
+            finally
+            { 
+                textBox1.Text = String.Empty;
+            }
+
+            
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form form = new Form1();
-            form.Show();  
+            Form form = new Form1(); //?
+            form.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -135,10 +149,15 @@ namespace chuc_coursework
                 {
                     foreach(Match item in matches) 
                     {
-                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightCoral;
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
                     }
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
