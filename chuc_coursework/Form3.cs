@@ -16,5 +16,19 @@ namespace chuc_coursework
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            authorization aut = new authorization();
+            this.Hide();
+            aut.Show();
+        }
     }
 }

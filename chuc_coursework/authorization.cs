@@ -15,9 +15,10 @@ namespace chuc_coursework
 {
     public partial class authorization : Form
     {
-        public static string connStr = "server = chuc.caseum.ru;port = 33333;user = st_2_20_4;database=is_2_20_st4_KURS;password=65655604;";
-        Form1 form1 = new Form1();
+        public static string connStr = "server = chuc.sdlik.ru;port = 33333;user = st_2_20_4;database=is_2_20_st4_KURS;password=65655604;";
+        //Form1 form1 = new Form1();
         //authorization authh =new authorization();
+        Menu menu = new Menu();
         public authorization()
         {
             InitializeComponent();
@@ -74,7 +75,7 @@ namespace chuc_coursework
                     Invoke(new Action(() =>
                     {
                         this.Hide();
-                        form1.Show();
+                        menu.Show();
                     }));
                     break;
                 //case "admin":
@@ -107,6 +108,11 @@ namespace chuc_coursework
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

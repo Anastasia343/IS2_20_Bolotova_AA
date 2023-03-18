@@ -66,21 +66,6 @@ namespace chuc_coursework
             conn.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form2 form2 = new Form2();
-            this.Hide();
-            form2.Show();
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form3 form3 = new Form3();
-            this.Hide();
-            form3.Show();
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -117,20 +102,20 @@ namespace chuc_coursework
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form form = new Form1(); //?
-            form.Show();
+            dataGridView1.Rows.Clear();
+            LoadData();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = new MySqlConnection(authorization.connStr);
-            string id = textBox11.Text;
+            string id = textBox1.Text;
             string MySQL = string.Format("DELETE FROM Provider WHERE (id = {0})", id);
             conn.Open();
             MySqlCommand command = new MySqlCommand(MySQL, conn);
             command.ExecuteNonQuery();
             conn.Close();
+            textBox1.Text = String.Empty;
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -153,11 +138,19 @@ namespace chuc_coursework
                     }
                 }
             }
+            textBox12.Text = String.Empty;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.Show();
         }
     }
 }
